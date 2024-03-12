@@ -13,7 +13,8 @@ pipeline {
             steps {
                 // Install the required dependencies
                  // bat 'pip install --upgrade pip'
-                bat 'pip install  -r requirements.txt'
+                 bat 'python install pytest.py'
+                // bat 'pip install  -r requirements.txt'
                
              
                 
