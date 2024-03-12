@@ -12,8 +12,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 // Install the required dependencies
-                //bat 'pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                // bat 'pip3 install --upgrade pip'
+                bat 'pip3 install -r requirements.txt'
             }
         }
 
