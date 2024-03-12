@@ -5,32 +5,37 @@ pipeline {
         stage('Clone repository') {
             steps {
                 // Clone the repository
-                checkout scm
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    checkout scm
+                }
             }
         }
 
         stage('Install dependencies') {
             steps {
                 // Install the required dependencies
-                 // bat 'pip install --upgrade pip'
-                 bat 'pip install -r requirements.txt'
-               
-             
-                
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat 'pip install --upgrade pip'
+                    bat 'pip install -r requirements.txt'
+                }
             }
         }
 
         stage('Run tests') {
             steps {
                 // Execute the tests
-                bat 'pytest test.py'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    bat 'pytest test.py'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
                 script {
-                    deploy(env.BRANCH_NAME)
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        deploy(env.BRANCH_NAME)
+                    }
                 }
             }
         }
@@ -44,8 +49,4 @@ def deploy(String branchName) {
     } else {
         echo "Deploying to UAT"
     }
-    // else {
-    //     echo "Deploying to a non-production/non-UAT branch: ${branchName}"
-    //    //deploy
-    // }
 }
