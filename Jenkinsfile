@@ -12,10 +12,10 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 // Install the required dependencies
-                // bat 'pip install --upgrade pip'
+                 bat 'pip install --upgrade pip'
                // bat 'pip install --user -r requirements.txt'
                
-                 bat 'C:\Users\ahmed\AppData\Local\Programs\Python\Python311\Scripts\ -m pip install --user -r requirements.txt'
+             
                 
             }
         }
