@@ -13,7 +13,7 @@ pipeline {
             steps {
                 // Install the required dependencies
                 // bat 'pip install --upgrade pip'
-                bat 'pip24.0 install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
